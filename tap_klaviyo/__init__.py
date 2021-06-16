@@ -33,6 +33,10 @@ EVENT_MAPPINGS = {
     "Updated Email Preferences": "update_email_preferences",
     "Dropped Email": "dropped_email",
 }
+FULL_PULLS = [
+    "campaigns", "lists", "global_exclusions"
+]
+
 
 
 @singer_utils.handle_top_exception(LOGGER)
@@ -45,10 +49,17 @@ def main():
         do_discover(args.config['api_key'])
 
     else:
+        if args.catalog:
+            pass
+        elif args.properties:
+            sys.stderr.write("Property selections: DEPRECATED, Please use --catalog instead")
+        else:
+            print("Catalog file required, please use --catalog <path/to/catalog/file>")
+            exit(1)
+
         from discovery import discover
         from sync import do_sync
-        catalog = args.catalog.to_dict() if args.catalog else discover(
-             args.config['api_key'])
+        catalog = args.catalog.to_dict()  # if args.catalog else discover(args.config['api_key'])
 
         state = args.state if args.state else {"bookmarks": {}}
         do_sync(args.config, state, catalog)

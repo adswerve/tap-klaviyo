@@ -1,6 +1,6 @@
 import singer
 from singer import metadata, Transformer, metrics
-from tap_klaviyo import ENDPOINTS, EVENT_MAPPINGS
+from tap_klaviyo import ENDPOINTS, EVENT_MAPPINGS, FULL_PULLS
 from client import authed_get
 from utils import ts_to_dt, dt_to_ts
 
@@ -121,8 +121,14 @@ def do_sync(config, state, catalog):
             stream['key_properties']
         )
 
-        if stream['stream'] in EVENT_MAPPINGS.values():
+        # if stream['stream'] in EVENT_MAPPINGS.values():
+        #     get_incremental_pull(stream, ENDPOINTS['metric'], state,
+        #                          api_key, start_date)
+        # else:
+        #     get_full_pulls(stream, ENDPOINTS[stream['stream']], api_key)
+
+        if stream['stream'] in FULL_PULLS:
+            get_full_pulls(stream, ENDPOINTS[stream['stream']], api_key)
+        else:
             get_incremental_pull(stream, ENDPOINTS['metric'], state,
                                  api_key, start_date)
-        else:
-            get_full_pulls(stream, ENDPOINTS[stream['stream']], api_key)
