@@ -101,6 +101,8 @@ def transfrom_and_write_records(events, stream):
                     event, event_schema, event_mdata
                 ))
 
+
+
 def do_sync(config, state, catalog):
     api_key = config['api_key']
     start_date = config['start_date'] if 'start_date' in config else None

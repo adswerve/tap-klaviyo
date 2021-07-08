@@ -9,8 +9,13 @@ setup(name='tap-klaviyo',
       url='http://singer.io',
       classifiers=['Programming Language :: Python :: 3 :: Only'],
       py_modules=['tap_klaviyo'],
-      install_requires=['singer-python==5.12.1',
-                        'requests==2.20.0'],
+      install_requires=[
+          'singer-python==5.12.1',
+          'requests==2.20.0',
+          # 'pandas==1.2.4',
+          # 'singer-tools==0.4.1'  # from 2017
+          'git+git://github.com/singer-io/singer-tools@1654a5cfdd56b0b2fda49c344ff85c95fc7b0262'  # 04/05/2021
+      ],
       entry_points='''
           [console_scripts]
           tap-klaviyo=tap_klaviyo:main
@@ -30,7 +35,7 @@ setup(name='tap-klaviyo',
                 "subscribe_list.json",
                 "unsub_list.json",
                 "update_email_preferences.json",
-              ]
-         },
+          ]
+      },
       include_package_data=True
 )
