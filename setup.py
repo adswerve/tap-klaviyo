@@ -12,7 +12,10 @@ setup(name='tap-klaviyo',
       install_requires=[
           'singer-python==5.12.1',
           'requests==2.20.0',
-          'git+git://github.com/singer-io/singer-tools@1654a5cfdd56b0b2fda49c344ff85c95fc7b0262'
+          'repo @ https://github.com/singer-io/singer-tools/commit/1654a5cfdd56b0b2fda49c344ff85c95fc7b0262'
+      ],
+      dependency_links=[
+            'http://github.com/singer-io/singer-tools@1654a5cfdd56b0b2fda49c344ff85c95fc7b0262'
       ],
       entry_points='''
           [console_scripts]
