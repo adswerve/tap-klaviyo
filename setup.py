@@ -12,9 +12,7 @@ setup(name='tap-klaviyo',
       install_requires=[
           'singer-python==5.12.1',
           'requests==2.20.0',
-          # 'pandas==1.2.4',
-          # 'singer-tools==0.4.1'  # from 2017
-          'git+git://github.com/singer-io/singer-tools@1654a5cfdd56b0b2fda49c344ff85c95fc7b0262'  # 04/05/2021
+          'git+git://github.com/singer-io/singer-tools@1654a5cfdd56b0b2fda49c344ff85c95fc7b0262'
       ],
       entry_points='''
           [console_scripts]
