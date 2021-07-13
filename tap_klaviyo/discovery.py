@@ -1,9 +1,9 @@
 import json
 import datetime
 from dateutil.parser import parse
-from client import authed_get
-from streams import Stream
-from sync import get_all_pages
+from tap_klaviyo.client import authed_get
+from tap_klaviyo.streams import Stream
+from tap_klaviyo.sync import get_all_pages
 from tap_klaviyo import ENDPOINTS
 from singertools.infer_schema import add_observations, to_json_schema
 

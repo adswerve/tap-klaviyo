@@ -1,8 +1,8 @@
 import singer
 from singer import metadata, Transformer, metrics
 from tap_klaviyo import ENDPOINTS, EVENT_MAPPINGS, FULL_PULLS
-from client import authed_get
-from utils import ts_to_dt, dt_to_ts
+from tap_klaviyo.client import authed_get
+from tap_klaviyo.utils import ts_to_dt, dt_to_ts
 
 logger = singer.get_logger()
 

@@ -45,10 +45,12 @@ def main():
     args = singer_utils.parse_args(REQUIRED_CONFIG_KEYS)
 
     if args.discover:
-        from discovery import do_discover
+        from tap_klaviyo.discovery import do_discover
         do_discover(args.config['api_key'])
 
     else:
+        from tap_klaviyo.sync import do_sync
+
         if args.catalog:
             pass
         elif args.properties:
@@ -56,9 +58,6 @@ def main():
         else:
             print("Catalog file required, please use --catalog <path/to/catalog/file>")
             exit(1)
-
-        from discovery import discover
-        from sync import do_sync
         catalog = args.catalog.to_dict()  # if args.catalog else discover(args.config['api_key'])
 
         state = args.state if args.state else {"bookmarks": {}}

@@ -2,7 +2,7 @@ import backoff
 import requests
 import simplejson
 from singer import metrics
-from utils import raise_for_error, KlaviyoInternalServiceError
+from tap_klaviyo.utils import raise_for_error, KlaviyoInternalServiceError
 
 session = requests.Session()
 

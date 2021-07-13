@@ -1,6 +1,6 @@
 import json
 from singer import metadata
-from utils import get_abs_path
+from tap_klaviyo.utils import get_abs_path
 
 class Stream(object):
     def __init__(self, stream, schema, tap_stream_id, key_properties, replication_method):
